@@ -25,12 +25,22 @@ int _printf(const char *format, ...)
 			}
 			if (format[i + 1] == 's')
 			{
-				print_string(va_arg(ap, char *));
+				n += print_string(va_arg(ap, char *));
 				i++;
 			}
 			if (format[i + 1] == '%')
 			{
 				_putchar(format[i + 1]);
+				i++;
+			}
+			if (format[i + 1] == 'd')
+			{
+				print_int(va_arg(ap, int));
+				i++;
+			}
+			if (format[i + 1] == 'i')
+			{
+				print_int(va_arg(ap, int));
 				i++;
 			}
 		}

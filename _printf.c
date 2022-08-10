@@ -33,6 +33,16 @@ int _printf(const char *format, ...)
 				_putchar(format[i + 1]);
 				i++;
 			}
+			if (format[i + 1] == 'd')
+			{
+				print_int(va_arg(ap, int));
+				i++;
+			}
+			if (format[i + 1] == 'i')
+			{
+				print_int(va_arg(ap, int));
+				i++;
+			}
 		}
 		else
 			_putchar(format[i]);
