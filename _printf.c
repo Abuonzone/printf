@@ -40,6 +40,6 @@ int _printf(const char *format, ...)
 		n++;
 	}
 	va_end(ap);
-	return (n);
+	return (n - 1);
 
 }
