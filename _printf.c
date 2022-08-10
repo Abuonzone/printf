@@ -22,16 +22,18 @@ int _printf(const char *format, ...)
 			{
 				_putchar(va_arg(ap, int));
 				i++;
+				n -= 1;
 			}
 			if (format[i + 1] == 's')
 			{
-				print_string(va_arg(ap, char *));
+				n = (n - 2) + print_string(va_arg(ap, char *));
 				i++;
 			}
 			if (format[i + 1] == 's')
 			{
 				_putchar(format[i + 1]);
 				i++;
+				n -= 1;
 			}
 		}
 		else
