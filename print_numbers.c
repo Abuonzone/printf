@@ -37,7 +37,8 @@ int print_unsigned(va_list l, flags_t *f)
 }
 
 /**
- * print_number - function that loops through an integer and prints all its digits
+ * print_number - function that loops through
+ * an integer and prints all its digits
  * @n: integer to be printed
  */
 void print_number(int n)

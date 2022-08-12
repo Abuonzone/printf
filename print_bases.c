@@ -1,9 +1,10 @@
 #include "main.h"
 
 /**
- * print_hex prints a number in hexadecimal base in lowercase
+ * print_hex - prints a number in hexadecimal base in lowercase
  * @l: va_list arguments from _printf
- * @f: pointer to the struct flags that determines if a flag is passed to printf
+ * @f: pointer to the struct flags that
+ * determines if a flag is passed to printf
  * Description: the function calls convert() which then converts the input
  * number into the correct base and returns it as a string
  * Return: the number of char printed
@@ -69,7 +70,7 @@ int print_octal(va_list l, flags_t *f)
 	char *str = convert(num, 8, 0);
 	int count = 0;
 
-	if(f->hash == 1 && str[0] != '0')
+	if (f->hash == 1 && str[0] != '0')
 		count += _putchar('0');
 	count += _puts(str);
 	return (count);

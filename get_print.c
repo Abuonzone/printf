@@ -29,6 +29,7 @@ int (*get_print(char s))(va_list, flags_t *)
 		{'%', print_percent}
 	};
 	int flags = 14;
+
 	register int i;
 
 	for (i = 0; i < flags; i++)
@@ -36,5 +37,3 @@ int (*get_print(char s))(va_list, flags_t *)
 			return (func_array[i].f);
 	return (NULL);
 }
-
-	

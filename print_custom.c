@@ -2,11 +2,12 @@
 
 /**
  * print_bigS - Non printable characters
- * (0 < ASCII value < 32 or >= 127) are 
+ * (0 < ASCII value < 32 or >= 127) are
  * printed this way: \x, followed by the ASCII code
  * value in hexadecimal (upper case - always 2 characters)
  * @l: va_list arguments from _printf
- * @f: pointer to the struct flags that determines if a flag is passed to printf
+ * @f: pointer to the struct flags that
+ * determines if a flag is passed to printf
  * Return: The number of characters printed
  */
 int print_bigS(va_list l, flags_t *f)

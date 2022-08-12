@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * get_flag - turns on flag if _printf finds a flag modifier in the 
+ * get_flag - turns on flag if _printf finds a flag modifier in the
  * format string
  * @s: character in the format string
  * @f: pointer to struct flags in which we switch the flag on
@@ -11,7 +11,7 @@ int get_flag(char s, flags_t *f)
 {
 	int i = 0;
 
-	switch(s)
+	switch (s)
 	{
 		case '+':
 			f->plus = 1;
