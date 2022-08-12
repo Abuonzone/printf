@@ -2,54 +2,48 @@
 
 /**
  * _printf - A function that produces output according to format
- * @format: The format identifier
- * @...: Variadic function
- * Return: Integer
+ * @format: The format string containing the characters and the specifiers
+ * Description: This function will call the get_print() function that will
+ * determine which printing function to call depeding on the conversion
+ * specifiers conatained in the format string
+ * Return: length of the formatted output string printed on stdout
  */
 
 int _printf(const char *format, ...)
 {
-	int n = 0, i;
-	va_list ap;
+	int (*pfunc)(va_list, flags_t *);
+	const char *p;
+	va_list args;
+	flags_t flags = {0, 0, 0};
 
-	va_start(ap, format);
-	i = 0;
-	while (format[i])
+	register int count = 0;
+
+	va_start(args, format);
+	if (!format || (format[0] == '%' && !format[1]))
+		return (-1);
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
+		return (-1);
+	for (p = format; *p; p++)
 	{
-		if (format[i] == '%')
+		if (*p == '%')
 		{
-			if (format[i + 1] == 'c')
+			p++;
+			if (*p == '%')
 			{
-				_putchar(va_arg(ap, int));
-				i++;
+				count += _putchar('%');
+				continue;
 			}
-			if (format[i + 1] == 's')
-			{
-				n += print_string(va_arg(ap, char *));
-				i++;
-			}
-			if (format[i + 1] == 's')
-			{
-				_putchar(format[i + 1]);
-				i++;
-			}
-			if (format[i + 1] == 'd')
-			{
-				print_int(va_arg(ap, int));
-				i++;
-			}
-			if (format[i + 1] == 'i')
-			{
-				print_int(va_arg(ap, int));
-				i++;
-			}
+			while (get_flag(*p, &flags))
+				p++;
+			pfunc = get_print(*p);
+			count += (pfunc)
+				? pfunc(args, &flags)
+				: _printf("%%%c", *p);
 		}
 		else
-			_putchar(format[i]);
-		i++;
-		n++;
+			count += _putchar(*p);
 	}
-	va_end(ap);
-	return (n);
-
+	_putchar(-1);
+	va_end(args);
+	return (count);
 }
